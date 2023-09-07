@@ -72,16 +72,16 @@ jobs:
     - name: Update config
       uses: Azure/appservice-settings@v1
       with:
-      app-name: ${{ env.app-name }}
-      slot-name: staging
-      app-settings-json: |
-        [
-            {
-                "name": "UI:Index:Header",
-                "value": "${{ secrets.INDEX_HEADER }}",
-                "slotSetting": true
-            }
-        ]
+        app-name: ${{ env.app-name }}
+        slot-name: staging
+        app-settings-json: |
+          [
+              {
+                  "name": "UI:Index:Header",
+                  "value": "${{ secrets.INDEX_HEADER }}",
+                  "slotSetting": true
+              }
+          ]
 
     - name: az cli logout
       run: az logout
