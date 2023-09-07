@@ -11,7 +11,7 @@ on:
 
 env:
   app-name: "ulytestapp"
-  rg-name: "ulytestapprg"
+  rg-name: "ulytestapp_group"
 
 jobs:
   build:
