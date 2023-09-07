@@ -4,6 +4,7 @@
 name: .NET
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
   pull_request:
@@ -67,6 +68,20 @@ jobs:
         app-name: ${{ env.app-name }}
         slot-name: staging
         package: website
+
+    - name: Update config
+      uses: Azure/appservice-settings@v1
+      with:
+      app-name: ${{ env.app-name }}
+      slot-name: staging
+      app-settings-json: |
+        [
+            {
+                "name": "UI:Index:Header",
+                "value": "${{ secrets.INDEX_HEADER }}",
+                "slotSetting": true
+            }
+        ]
 
     - name: az cli logout
       run: az logout
