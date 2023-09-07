@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: PRE-PROD
+      name: DEV
       url: ${{ steps.deploywebapp.outputs.webapp-url }}
 
     steps:
@@ -58,6 +58,7 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+        enable-AzPSSession: true
 
     - name: Deploy web app
       id: deploywebapp
