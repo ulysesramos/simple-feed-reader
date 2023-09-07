@@ -23,14 +23,14 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build ${{ github.workspace }}/SimpleFeedReader/SimpleFeedReader.csproj --no-restore
+      run: dotnet build ${{ github.workspace }}/SimpleFeedReader.csproj --no-restore
     - name: Test
-      run: dotnet test ${{ github.workspace }}/SimpleFeedReader/SimpleFeedReader.csproj --no-build --verbosity normal
+      run: dotnet test ${{ github.workspace }}/SimpleFeedReader.csproj --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish ${{ github.workspace }}/SimpleFeedReader/SimpleFeedReader.csproj -c Release -o website
+      run: dotnet publish ${{ github.workspace }}/SimpleFeedReader.csproj -c Release -o website
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3
       with:
         name: website
-        path: ${{ github.workspace }}/SimpleFeedReader/website/*
+        path: "${{ github.workspace }}/website/*"
         if-no-files-found: error
